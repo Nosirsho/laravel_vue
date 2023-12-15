@@ -44,19 +44,12 @@ export default {
 
     methods: {
         getPerson() {
-            axios.get("/api/people", {
-                name: this.name,
-                age: this.age,
-                job: this.job
-            }).then(res => {
+            axios.get("/api/people").then(res => {
                 this.persons = res.data;
+            }).catch(err =>{
+                console.log('err-> ' + err);
             });
         },
-
-        isEditPerson(id){
-            return this.editPersonId === id
-        },
-
     },
     components:{
         EditComponent,
